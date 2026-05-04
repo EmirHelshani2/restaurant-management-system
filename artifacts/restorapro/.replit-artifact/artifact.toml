@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "RestoraPro"
+version = "1.0.0"
+id = "artifacts/restorapro"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18718
+
+[services.development]
+run = "pnpm --filter @workspace/restorapro run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/restorapro", "run", "build" ]
+publicDir = "artifacts/restorapro/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18718"
+BASE_PATH = "/"
