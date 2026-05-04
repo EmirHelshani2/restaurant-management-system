@@ -1,0 +1,334 @@
+Build a complete full-stack Restaurant Management System from scratch.
+
+Goal:
+Create a professional, modern, production-style restaurant management platform that manages all important restaurant operations in one system: reservations, table management, waiter ordering, kitchen/bar live orders, cashier/POS, inventory, staff roles, reports, and admin settings.
+
+Important:
+Do NOT make a simple demo.
+Build a real usable system with clean code, responsive UI, working database, seeded sample data, and all main workflows connected.
+Use a practical stack that works well in Replit.
+Prefer:
+- Frontend: React + Vite + TypeScript
+- Styling: Tailwind CSS
+- Backend: Node.js + Express
+- Database: SQLite for easy Replit setup
+- Real-time updates: Socket.io
+- Authentication: simple JWT/session-based login
+- Passwords must be hashed
+- Role-based access control
+
+System name:
+“RestoraPro”
+
+Design requirements:
+Make the UI look premium, modern, and professional.
+Use a clean dashboard layout with sidebar navigation, cards, tables, status badges, modals, filters, search, and responsive mobile design.
+The system must work on laptop, tablet, and mobile.
+Use realistic restaurant colors: dark navy/charcoal, white, warm orange/gold accents, green success, red danger.
+Do not use ugly default styling.
+
+User roles:
+Create login and role-based dashboards for:
+1. Admin
+2. Manager
+3. Waiter
+4. Kitchen Staff
+5. Bar Staff
+6. Cashier
+7. Receptionist
+8. Inventory Manager
+
+Seed these demo accounts:
+admin@restorapro.com / password123
+manager@restorapro.com / password123
+waiter@restorapro.com / password123
+kitchen@restorapro.com / password123
+bar@restorapro.com / password123
+cashier@restorapro.com / password123
+reception@restorapro.com / password123
+inventory@restorapro.com / password123
+
+Main modules to build:
+
+1. Authentication and roles
+- Login page
+- Logout
+- Protected routes
+- Role-based sidebar items
+- Prevent users from accessing unauthorized pages
+- User profile dropdown
+
+2. Admin dashboard
+Show overview cards:
+- Today’s revenue
+- Active orders
+- Pending kitchen orders
+- Reservations today
+- Occupied tables
+- Low-stock items
+- Staff on shift
+- Most sold menu items
+Include simple charts/tables if possible.
+
+3. Table management
+- Restaurant floor/table list
+- Tables with statuses:
+  available, reserved, occupied, waiting_payment, cleaning
+- Table capacity
+- Assign waiter to table
+- Open order from table
+- Change table status
+- Transfer table
+- Merge tables for large groups
+
+4. Reservation system
+- Create reservation
+- Customer name, phone, email, guest count, date, time, notes
+- Assign table
+- Reservation statuses:
+  pending, confirmed, seated, cancelled, no_show, completed
+- Calendar/list view
+- Search and filter reservations
+- Convert reservation into occupied table/order
+- Prevent obvious double booking for the same table/time
+
+5. Waiter order system
+- Waiter selects table
+- Create order for table
+- Add menu items
+- Select quantity
+- Add notes, allergies, special instructions
+- Add modifiers/options, for example size, extra cheese, no onion
+- Send food items to kitchen
+- Send drink items to bar
+- Live order status updates
+- Waiter can see:
+  pending, preparing, ready, served
+- Waiter can mark ready items as served
+- Waiter can request bill
+
+6. Kitchen display system
+- Kitchen dashboard receives food orders instantly
+- Show tickets/cards by order/table/time/waiter
+- Status buttons:
+  accept, preparing, ready
+- Show item notes and allergies clearly
+- Sort oldest orders first
+- Highlight delayed orders
+- Kitchen only sees food items, not drinks
+
+7. Bar display system
+- Bar dashboard receives drink orders instantly
+- Same workflow as kitchen:
+  accept, preparing, ready
+- Bar only sees drink items
+
+8. Cashier/POS system
+- View open bills by table/order
+- Calculate subtotal, tax, service charge, discounts, total
+- Split bill by item or equal split
+- Payment methods:
+  cash, card, mixed
+- Mark order as paid
+- Print-friendly receipt page
+- Close table after payment
+- Store payment history
+
+9. Menu management
+- Categories:
+  starters, main dishes, desserts, drinks, coffee, alcohol-free drinks
+- Menu item fields:
+  name, description, category, price, image URL optional, availability, prep department kitchen/bar, preparation time
+- CRUD menu items
+- Enable/disable menu items
+- Search/filter menu
+
+10. Inventory management
+- Ingredients/products stock
+- Unit: kg, g, liter, ml, pcs
+- Current stock
+- Minimum stock
+- Supplier
+- Cost price
+- Low-stock alert
+- Stock in/out movements
+- When an order is paid or sent, reduce stock based on recipe mapping if possible
+- Basic recipe mapping:
+  menu item uses ingredient and quantity
+
+11. Staff management
+- Staff list
+- Role
+- Phone/email
+- Shift status
+- Active/inactive
+- Assign waiter to tables
+- Basic shift tracking:
+  start shift, end shift
+
+12. Customer management
+- Customer list from reservations/orders
+- Name, phone, email
+- Visit count
+- Total spent
+- Notes/preferences
+- Search customers
+
+13. Reports and analytics
+Create reports for:
+- Daily sales
+- Weekly sales
+- Monthly sales
+- Sales by category
+- Sales by waiter
+- Most sold items
+- Payment method summary
+- Reservation summary
+- Inventory low-stock report
+Use cards, tables, and simple charts if possible.
+
+14. Notifications
+- Real-time notification when:
+  waiter sends order to kitchen/bar
+  kitchen marks food ready
+  bar marks drink ready
+  cashier closes bill
+  reservation is created/confirmed
+- Show notification bell or toast messages
+
+15. Settings
+- Restaurant name
+- Address
+- Phone
+- Currency
+- Tax percentage
+- Service charge percentage
+- Opening hours
+- Table layout settings
+- Receipt footer message
+
+Database:
+Create a clean SQLite database with migrations/schema.
+Include tables for:
+- users
+- staff
+- tables
+- reservations
+- customers
+- menu_categories
+- menu_items
+- menu_modifiers
+- orders
+- order_items
+- payments
+- inventory_items
+- suppliers
+- stock_movements
+- recipes
+- notifications
+- settings
+
+Seed the database with realistic sample data:
+- 8 users
+- 15 tables
+- 20+ menu items
+- 10+ inventory items
+- 5 reservations
+- 5 customers
+- Some active orders
+- Some completed payments
+- Some low-stock items
+
+Technical requirements:
+- Use organized folder structure.
+- Use reusable components.
+- Use API routes with clear names.
+- Add validation on backend.
+- Handle errors properly.
+- Add loading states and empty states.
+- Keep code clean and understandable.
+- Include comments only where useful.
+- Make sure npm install and npm run dev work.
+- Provide a README with setup instructions, demo accounts, features, and how to run.
+
+Suggested routes/pages:
+Frontend:
+- /login
+- /dashboard
+- /tables
+- /reservations
+- /orders
+- /waiter
+- /kitchen
+- /bar
+- /cashier
+- /menu
+- /inventory
+- /staff
+- /customers
+- /reports
+- /settings
+- /receipt/:orderId
+
+Backend API:
+- POST /api/auth/login
+- GET /api/me
+- CRUD /api/users
+- CRUD /api/tables
+- CRUD /api/reservations
+- CRUD /api/menu-items
+- CRUD /api/orders
+- PATCH /api/order-items/:id/status
+- CRUD /api/payments
+- CRUD /api/inventory
+- CRUD /api/staff
+- CRUD /api/customers
+- GET /api/reports/overview
+- GET /api/reports/sales
+- CRUD /api/settings
+
+Real-time Socket.io events:
+- order:created
+- order:updated
+- kitchen:item_received
+- kitchen:item_ready
+- bar:item_received
+- bar:item_ready
+- bill:requested
+- payment:completed
+- reservation:created
+- notification:new
+
+Important workflows that must work:
+1. Receptionist creates reservation.
+2. Reservation is confirmed and assigned to a table.
+3. Customer arrives, table becomes occupied.
+4. Waiter opens order for that table.
+5. Waiter adds food and drinks.
+6. Food goes live to kitchen.
+7. Drinks go live to bar.
+8. Kitchen/bar update item statuses.
+9. Waiter sees when items are ready.
+10. Waiter marks items served.
+11. Customer asks for bill.
+12. Cashier opens bill, applies payment.
+13. Receipt is generated.
+14. Table becomes available/cleaning.
+15. Reports update.
+
+Final quality:
+Before finishing, test the app and fix obvious errors.
+Make sure pages do not crash.
+Make sure sidebar navigation works.
+Make sure authentication works.
+Make sure role-based access works.
+Make sure seeded data appears.
+Make sure real-time order flow works.
+Make sure the system looks professional.
+
+After building, give me:
+1. The command to run it
+2. Demo login accounts
+3. What features are completed
+4. What files/folders are most important
+5. What I should improve later with Codex or Claude Code
